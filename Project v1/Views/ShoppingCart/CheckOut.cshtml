@@ -1,0 +1,126 @@
+﻿@model Project_v1.Models.OrderModel
+
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+<h2>CheckOut</h2>
+@Html.Partial("_SearchbarPartial")
+<div id="wrapper">
+    <!-- ****** Checkout Area Start ****** -->
+    <div class="checkout_area section_padding_100">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-md-6">
+                    <div class="checkout_details_area mt-50 clearfix">
+
+                        <form action="/ShoppingCart/Order" method="post" id="checkoutForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="first_name">First Name <span>*</span></label>
+                                    <input type="text" class="form-control" id="first_name" name="model.FirstName" value="@Model.FirstName" disabled>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="last_name">Last Name <span>*</span></label>
+                                    <input type="text" class="form-control" id="last_name" name="model.LastName" value="@Model.LastName" disabled>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="country">Country <span>*</span></label>
+                                    <select class="custom-select d-block w-100" id="country" name="model.Country">
+                                        <option value="pak">Pakistan</option>
+                                        <option value="usa">United States</option>
+                                        <option value="uk">United Kingdom</option>
+                                        <option value="ger">Germany</option>
+                                        <option value="fra">France</option>
+                                        <option value="ind">India</option>
+                                        <option value="aus">Australia</option>
+                                        <option value="bra">Brazil</option>
+                                        <option value="cana">Canada</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="street_address">Address <span>*</span></label>
+                                    <input type="text" class="form-control mb-3" id="street_address" value="" required name="model.Address">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="postcode">Postcode <span>*</span></label>
+                                    <input type="text" class="form-control" id="postcode" value="" required name="model.PostCode">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="city">Town/City <span>*</span></label>
+                                    <input type="text" class="form-control" id="city" value="" required name="model.City">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="state">Province <span>*</span></label>
+                                    <input type="text" class="form-control" id="state" value="" required name="model.Province">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="phone_number">Phone No <span>*</span></label>
+                                    <input type="number" class="form-control" id="phone_number" min="0" value="" required name="model.Phone">
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <label for="email_address">Email Address <span>*</span></label>
+                                    <input type="email" class="form-control" name="model.Email" id="email_address" value="@Model.Email" disabled>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="custom-control custom-checkbox d-block mb-2">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" required>
+                                        <label class="custom-control-label" for="customCheck1">Terms and conitions</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="accordion" role="tablist" class="mb-4">
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="headingTwo">
+                                        <h6 class="mb-0">
+                                            <select class="custom-select d-block w-100" id="country" name="payment.PayType">
+                                                <option value="cash" class="card-number-cash collapsed" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Cash On Delivery</option>
+                                                <option value="credit card" class="collapsed btn btn-success card-number-credit" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Credit Card</option>
+                                            </select>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseThree" class="" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Card Number:
+                                            <div class="col-md-10">
+                                                <input type="number" class="card-number" name="payment.CardNumber" disabled />
+                                            </div>
+                                            <input type="number" value="@Model.Total" readonly="readonly"name="model.Total" hidden/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
+                    <div class="order-details-confirmation">
+
+                        <div class="cart-page-heading">
+                            <h5>Your Order</h5>
+                            <p>The Details</p>
+                        </div>
+
+                        <ul class="order-details-form mb-4">
+                            <li><span>Product</span> <span>Total</span></li>
+                            @foreach (var item in Model.OrderDetails)
+                            {
+                                <li><span>@item.ItemName</span> <span>@(item.UnitPrice * item.ItemQuantity)</span></li>
+                            }
+                            <li><span>Shipping</span> <span>Free</span></li>
+                            <li><span name="model.Total" value="@Model.Total">Total</span> <span>@Model.Total</span></li>
+                        </ul>
+                        <input type="submit" class="btn karl-checkout-btn" form="checkoutForm" value="Place Order" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- ****** Checkout Area End ****** -->
+    <!-- ****** Footer Area End ****** -->
+</div>

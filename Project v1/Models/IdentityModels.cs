@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Project_v1.Entities;
 
 namespace Project_v1.Models
 {
@@ -21,7 +22,7 @@ namespace Project_v1.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("desktop-qm8t64g", throwIfV1Schema: false)
         {
         }
 
@@ -29,5 +30,17 @@ namespace Project_v1.Models
         {
             return new ApplicationDbContext();
         }
+        DbSet<Account> Accounts { get; set; }
+        DbSet<Category>Categories { get; set; }
+        DbSet<ProductType> ProductTypes { get; set; }
+        DbSet<Product> Products { get; set; }
+        DbSet<Item> Items { get; set; }
+        //DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        DbSet<Order> Orders { get; set; }
+        DbSet<OrderDetail> OrderDetails { get; set; }
+        DbSet<Payment> Payments { get; set; }
+        DbSet<OrderHistory> OrderHistories { get; set; }
+        DbSet<PurchaseItemHistory> PurchaseItemHistories { get; set; }
+        DbSet<RateItem> RateItems { get; set; }
     }
 }

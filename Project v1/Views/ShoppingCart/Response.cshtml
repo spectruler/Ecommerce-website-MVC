@@ -1,0 +1,52 @@
+﻿
+    @if (ViewBag.type == "error")
+    {
+        <style>
+            body {
+                background-image: url("../../Content/background/oops.jpg");
+            }
+        .row h2 { background-image: url("../../Content/background/oops.jpg"); }
+
+         .container  {
+                background-image: url("../../Content/background/oops.jpg");
+            }
+        </style>
+    }
+    else
+    {
+        <style>
+            body {
+                background-image: linear-gradient(to right bottom, #00416a,#e4e5e6);
+                width: 100%;
+                background-position-y: 55555px;
+                background-position-x: 55555px;
+            }
+        </style>
+    }
+
+<div class="container">
+    <div class="row">
+        @if (ViewBag.type == "error")
+        {
+            <h2 class="center-block danger text-danger">@ViewBag.Title</h2>
+            <hr class="danger" />
+        }
+        else
+        {
+            <h2 class="center-block success text-success">@ViewBag.Title</h2>
+            <hr class="success" />
+        }
+        @Html.Partial("_SearchbarPartial")
+        <div class="container" style="margin: auto auto">
+            @if (ViewBag.type == "error")
+            {
+                <h1 class="danger text-danger container" style="width:65%;" >@ViewBag.Message</h1>
+            }
+            else
+            {
+                <h1 class="success text-success container"style="width:65%;">@ViewBag.Message</h1>
+            }
+        </div>
+    </div>
+</div>
+

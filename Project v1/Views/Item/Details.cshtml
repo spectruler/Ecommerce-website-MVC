@@ -1,0 +1,46 @@
+﻿@model Project_v1.Areas.Admin.Models.ItemModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+@Html.Partial("_SearchbarPartial")
+<div class="col-md-9 row">
+    <hr />
+    <h2 class="text-center">@Model.Name</h2>
+    <div class="thumbnail">
+        <img class="img-responsive" src="@Url.Content(Model.ImageUrl)">
+        <div class="success text-left">
+            @if (Model.Availability == true)
+            {
+                <strong class="glyphicon-font text-success" style="font-size: 30px;">In Stock</strong>
+            }
+            else
+            {
+                <strong class="glyphicon-font text-danger" style="font-size: 30px;">Out of Stock</strong>
+            }
+        </div>
+        <div class="caption">
+            <strong>Product: @Model.Product</strong>
+        </div>
+    </div>
+    <div>
+        <h2>Description: </h2>
+        <strong>@Model.Description</strong>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<p>
+    @Html.Partial("_AddToCartPartial")
+    @Html.Partial("_BackToListButtonPartial")
+</p>

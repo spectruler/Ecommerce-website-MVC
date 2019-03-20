@@ -1,0 +1,15 @@
+﻿@model Project_v1.Entities.Category
+
+
+<div class="col-md-9 row">
+    <h1>Details </h1>
+    <hr />
+    <h2 class="text-center">@Model.Name</h2>
+    <div class="thumbnail">
+        <img class="img-responsive" src="@Url.Content(Model.ImageUrl)">
+    </div>
+</div>
+    <p>
+        @Html.Partial("_EditButtonPartial", Model.Id) |
+        @Html.Partial("_BackToListButtonPartial")
+    </p>

@@ -1,0 +1,26 @@
+﻿@model Project_v1.Areas.Admin.Models.ProductTypeModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="row">
+    <hr />
+    <h2 class="text-center">@Model.Name</h2>
+    <div class="thumbnail">
+        <img class="img-responsive" src="@Url.Content(Model.ImageUrl)">
+        <div class="caption">
+            <strong>Category: @Model.Category</strong>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <p >
+        @Html.Partial("_EditButtonPartial", Model.Id) |
+        @Html.Partial("_BackToListButtonPartial")
+    </p>
+</div>
+

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Project_v1.Areas.Admin.Models.ItemModel>
+@using Project_v1.Areas.Admin.Models;
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+}
+
+@Html.Partial("_SearchbarPartial")
+
+<h2>Search Result</h2>
+
+<div class="row text-center" style="display:flex;flex-wrap:wrap;">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-6">
+            <div class="thumbnail">
+                <img src="@Url.Content(item.ImageUrl)">
+                <div class="caption">
+                    <h4>@item.Name</h4>
+                    <h3>Price: @item.Price</h3>
+                    <strong>Product: @item.Product</strong>
+                </div>
+                @Html.Partial("_TableButtonPartial", new SmallButtonModel
+{
+Id = item.Id
+})
+            </div>
+        </div>
+    }
+</div>

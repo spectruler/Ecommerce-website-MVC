@@ -1,0 +1,53 @@
+﻿@model Project_v1.Areas.Admin.Models.ItemModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+
+<div class="col-md-9 row">
+    <hr />
+    <h2 class="text-center">@Model.Name</h2>
+    <div class="thumbnail">
+        <img class="img-responsive" src="@Url.Content(Model.ImageUrl)">
+        <div class="caption">
+            <strong>Product: @Model.Product</strong>
+        </div>
+    </div>
+    <div>
+        <h2>Description: </h2>
+        <strong>@Model.Description</strong>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Availability)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Availability)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+
+<p>
+    @Html.Partial("_EditButtonPartial",Model.Id ) |
+    @Html.Partial("_BackToListButtonPartial")
+</p>

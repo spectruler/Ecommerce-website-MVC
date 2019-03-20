@@ -25,6 +25,21 @@ namespace Project_v1
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/stylesheets").Include( 
+          "~/Content/stylesheet.css",
+          "~/Content/style.css",
+          "~/Content/responsive.css",
+          "~/Content/core-style.css",
+          "~/Content/navbar.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/style").Include(
+                      "~/Scripts/style.js",
+                      "~/Scripts/active.js",
+                      "~/Scripts/plugins.js",
+                      "~/Scripts/AdminMenu.js"));
+
+
         }
     }
 }

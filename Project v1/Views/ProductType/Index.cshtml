@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Project_v1.Areas.Admin.Models.ProductTypeModel>
+@using Project_v1.Areas.Admin.Models;
+
+@{
+    ViewBag.Title = "ProductType";
+}
+
+<h2>ProductType</h2>
+@Html.Partial("_SearchbarPartial")
+<div class="row text-center" style="display:flex;flex-wrap:wrap;">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-6">
+            <div class="thumbnail">
+                <img src="@Url.Content(item.ImageUrl)">
+                <div class="caption">
+                    <h4>@item.Name</h4>
+                    <strong>Category: @item.Category</strong>
+                </div>
+            </div>
+        </div>
+    }
+</div>
